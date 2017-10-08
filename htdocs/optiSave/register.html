@@ -178,7 +178,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							}
 							testVal = /\w@\w.\w/;
 							if(!testVal.test(email)) {
-								alert("Email must be in format (text)@(text).(text);
+								alert("Email must be in format (text)@(text).(text)");
 								return false;
 							}
 							if(address == "") {
@@ -238,6 +238,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Password required");	
 								return false;
 							}
+							return true;
 					}
 					//-->
 					</script>
