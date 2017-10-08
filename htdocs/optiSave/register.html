@@ -152,7 +152,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 					<script type="text/javascript">
 					<!--
 						function formValidation() {
-							var name, email, address, city, state, zipcode, phone, birthday, username, password;
+							var name, email, address, city, state, zipcode, phone, birthday, username, password, testVal;
 							name = document.getElementById("form_name").value;
 							email = document.getElementById("form_email").value;
 							address = document.getElementById("form_address").value;
@@ -165,6 +165,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							password = document.getElementById("form_password").value;
 							if(name == "") {
 								alert("Name required");	
+								return false;
+							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(name)) {
+								alert("Name can only be letters or whitespace");
 								return false;
 							}
 							if(email == "") {
@@ -203,6 +208,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Password required");	
 								return false;
 							}
+							return true;
 					}
 					//-->
 					</script>
