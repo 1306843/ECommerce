@@ -69,7 +69,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 					<!-- Content Form -->
 					<h2> Registration </h2>
-					<form action="UserRegistered.php" method="post">
+					<form action="UserRegistered.php" method="post" onsubmit="return(formValidation())>
 						<div class="form-group">
 							<label for="example-text-input" class="col-2 col-form-label">First and Last Name</label>
 							<div class="col-10">
@@ -149,7 +149,27 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<br>
 						<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
 					</form>
-
+					<script type="text/javascript">
+					<!--
+						function formValidation() {
+							var name, email, address, city, state, zipcode, phone, birthday, username, password;
+							name = document.getElementById("form_name").value;
+							email = document.getElementById("form_email").value;
+							address = document.getElementById("form_address").value;
+							city = document.getElementById("form_city").value;
+							state = document.getElementById("form_state").value;
+							zipcode = document.getElementById("form_zipcode").value;
+							phone = document.getElementById("form_phone").value;
+							birthday = document.getElementById("form_birthday").value;
+							username = document.getElementById("form_username").value;
+							password = document.getElementById("form_password").value;
+							if(name == "") {
+								alert("Name required");	
+								return false;
+							}
+					}
+					//-->
+					</script>
 				</div>
 			</div>
 			<div class="4u 12u$(medium)">
