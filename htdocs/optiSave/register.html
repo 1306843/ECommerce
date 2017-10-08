@@ -73,7 +73,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-text-input" class="col-2 col-form-label">First and Last Name</label>
 							<div class="col-10">
-								<input class="form-control" type="text" id="form_name" name="form_name">
+								<input class="form-control" type="text" id="form_name" name="form_name" value="<?php echo $name;?">
 								<span class="error">* <?php echo $nameErr;?></span>
 							</div>
 						</div>
@@ -82,7 +82,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">Email</label>
 							<div class="col-200">
-								<input class="form-control" type="text" id="form_email" name="form_email">
+								<input class="form-control" type="text" id="form_email" name="form_email" value="<?php echo $email;?">
 								<span class="error">* <?php echo $emailErr;?></span>
 							</div>
 						</div>
@@ -91,7 +91,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">Address</label>
 							<div class="col-200">
-								<input class="form-control" type="text" id="form_address" name="form_address">
+								<input class="form-control" type="text" id="form_address" name="form_address" value="<?php echo $address;?">
 								<span class="error">* <?php echo $addressErr;?></span>
 							</div>
 						</div>
@@ -100,7 +100,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">City</label>
 							<div class="col-200">
-								<input class="form-control" type="text" id="form_city" name="form_city">
+								<input class="form-control" type="text" id="form_city" name="form_city" value="<?php echo $city;?">
 								<span class="error">* <?php echo $cityErr;?></span>
 							</div>
 						</div>
@@ -109,7 +109,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">State</label>
 							<div class="col-200">
-								<input class="form-control" type="text" id="form_state" name="form_state">
+								<input class="form-control" type="text" id="form_state" name="form_state" value="<?php echo $state;?">
 								<span class="error">* <?php echo $stateErr;?></span>
 							</div>
 						</div>
@@ -118,7 +118,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">Zipcode</label>
 							<div class="col-200">
-								<input class="form-control" type="text" id="form_zipcode" name="form_zipcode">
+								<input class="form-control" type="text" id="form_zipcode" name="form_zipcode" value="<?php echo $zipcode;?">
 								<span class="error">* <?php echo $zipcodeErr;?></span>
 							</div>
 						</div>
@@ -127,7 +127,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-tel-input" class="col-2 col-form-label">Phone Number</label>
 							<div class="col-10">
-								<input class="form-control" type="text" id="form_phone" name="form_phone">
+								<input class="form-control" type="text" id="form_phone" name="form_phone" value="<?php echo $phone;?">
 								<span class="error">* <?php echo $phoneErr;?></span>
 							</div>
 						</div>
@@ -135,7 +135,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-date-input" class="col-2 col-form-label">Birthday</label>
 							<div class="col-10">
-								<input class="form-control" type="text" id="form_birthday" name="form_birthday">
+								<input class="form-control" type="text" id="form_birthday" name="form_birthday" value="<?php echo $birthday;?">
 								<span class="error">* <?php echo $birthdayErr;?></span>
 							</div>
 						</div>
@@ -143,7 +143,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group row">
 							<label for="example-search-input" class="col-2 col-form-label">Username</label>
 							<div class="col-10">
-								<input class="form-control" type="text" id="form_username" name="form_username">
+								<input class="form-control" type="text" id="form_username" name="form_username" value="<?php echo $username;?">
 								<span class="error">* <?php echo $usernameErr;?></span>
 							</div>
 						</div>
@@ -152,12 +152,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group row">
 							<label for="example-password-input" class="col-2 col-form-label">Password</label>
 							<div class="col-10">
-								<input class="form-control" type="password" id="form_password" name="form_password">
+								<input class="form-control" type="password" id="form_password" name="form_password" value="<?php echo $password;?">
 								<span class="error">* <?php echo $passwordErr;?></span>
 							</div>
 						</div>
 						<br>
-						<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
+						<input type="submit" name="submit" value="Submit">
+						//<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
 					</form>
 					<?php
 					// define variables and set to empty values
