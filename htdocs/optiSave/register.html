@@ -15,9 +15,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="images/pic08.jpg"/>
 </head>
-<style>
-.error {color: #FF0000;}
-</style>
 <body class="right-sidebar">
 	<div id="page-wrapper">
 
@@ -69,89 +66,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		<div class="row 200%">
 			<div class="8u 12u$(medium)">
 				<div id="content">
-					<?php
-					$nameErr = $emailErr = $addressErr = $cityErr = $stateErr = $zipcodeErr = $phoneErr = $birthdayErr = $usernameErr = $passwordErr = "";
-					$name = $email = $address = $city = $state = $zipcode = $phone = $birthday = $username = $password = "";
 
-					if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  						if (empty($_POST["form_name"])) {
-    							$nameErr = "Name is required";
-  						} else {
-    							$name = $_POST["form_name"];
-							if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      								$nameErr = "Only letters and white space allowed for Name"; 
-    							}
-  						}
-  						if (empty($_POST["form_email"])) {
-    							$emailErr = "Email is required";
-  						} else {
-    							$email = $_POST["form_email"];
-    							if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      								$emailErr = "Invalid email format"; 
-    							}
-  						}
-  						if (empty($_POST["form_address"])) {
-    							$addressErr = "Address is required";
-  						} else {
-    							$address = $_POST["form_address"];
-  						}
-  						if (empty($_POST["form_city"])) {
-    							$cityErr = "City is required";
-  						} else {
-    							$city = $_POST["form_city"];
-							if (!preg_match("/^[a-zA-Z ]*$/",$city)) {
-      								$cityErr = "Only letters and white space allowed for City"; 
-    							}
-  						}
-  						if (empty($_POST["form_state"])) {
-    							$stateErr = "State is required";
-  						} else {
-    							$state = $_POST["form_state"];
-							if (!preg_match("/^[a-zA-Z ]*$/",$state)) {
-      								$stateErr = "Only letters and white space allowed for State"; 
-    							}
-  						}
-  						if (empty($_POST["form_zipcode"])) {
-    							$zipcodeErr = "Zipcode is required";
-  						} else {
-    							$zipcode = $_POST["form_zipcode"];
-							if (!preg_match("/^[0-9]*$/",$zipcode)) {
-      								$zipcodeErr = "Only numbers allowed for Zipcode"; 
-    							}
-  						}
-  						if (empty($_POST["form_phone"])) {
-    							$phoneErr = "Phone is required";
-  						} else {
-    							$phone = $_POST["form_phone"];
-							if (!preg_match("/^[0-9 .()-]*$/",$phone)) {
-      								$phoneErr = "Only numbers, dashes, parentheses, or dots allowed for Phone"; 
-    							}
-  						}
-  						if (empty($_POST["form_birthday"])) {
-    							$birthdayErr = "Birthday is required";
-  						} else {
-    							$birthday = $_POST["form_birthday"];
-  						}
-  						if (empty($_POST["form_username"])) {
-    							$usernameErr = "Username is required";
-  						} else {
-    							$username = $_POST["form_username"];
-  						}
-  						if (empty($_POST["form_password"])) {
-    							$passwordErr = "Password is required";
-  						} else {
-    							$password = $_POST["form_password"];
-  						}
-					}
-					?>
 					<!-- Content Form -->
 					<h2> Registration </h2>
-					<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+					<form action="UserRegistered.php" method="post">
 						<div class="form-group">
 							<label for="example-text-input" class="col-2 col-form-label">First and Last Name</label>
 							<div class="col-10">
 								<input class="form-control" type="text" id="form_name" name="form_name">
-								<span class="error">* <?php echo $nameErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -160,7 +82,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-email-input" class="col-2 col-form-label">Email</label>
 							<div class="col-200">
 								<input class="form-control" type="text" id="form_email" name="form_email">
-								<span class="error">* <?php echo $emailErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -169,7 +90,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-email-input" class="col-2 col-form-label">Address</label>
 							<div class="col-200">
 								<input class="form-control" type="text" id="form_address" name="form_address">
-								<span class="error">* <?php echo $addressErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -178,7 +98,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-email-input" class="col-2 col-form-label">City</label>
 							<div class="col-200">
 								<input class="form-control" type="text" id="form_city" name="form_city">
-								<span class="error">* <?php echo $cityErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -187,7 +106,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-email-input" class="col-2 col-form-label">State</label>
 							<div class="col-200">
 								<input class="form-control" type="text" id="form_state" name="form_state">
-								<span class="error">* <?php echo $stateErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -196,7 +114,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-email-input" class="col-2 col-form-label">Zipcode</label>
 							<div class="col-200">
 								<input class="form-control" type="text" id="form_zipcode" name="form_zipcode">
-								<span class="error">* <?php echo $zipcodeErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -205,7 +122,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-tel-input" class="col-2 col-form-label">Phone Number</label>
 							<div class="col-10">
 								<input class="form-control" type="text" id="form_phone" name="form_phone">
-								<span class="error">* <?php echo $phoneErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -213,7 +129,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-date-input" class="col-2 col-form-label">Birthday</label>
 							<div class="col-10">
 								<input class="form-control" type="text" id="form_birthday" name="form_birthday">
-								<span class="error">* <?php echo $birthdayErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -221,7 +136,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-search-input" class="col-2 col-form-label">Username</label>
 							<div class="col-10">
 								<input class="form-control" type="text" id="form_username" name="form_username">
-								<span class="error">* <?php echo $usernameErr;?></span>
 							</div>
 						</div>
 						<br>
@@ -230,12 +144,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							<label for="example-password-input" class="col-2 col-form-label">Password</label>
 							<div class="col-10">
 								<input class="form-control" type="password" id="form_password" name="form_password">
-								<span class="error">* <?php echo $passwordErr;?></span>
 							</div>
 						</div>
 						<br>
-						<input type="submit" name="submit" value="Submit">
+						<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
 					</form>
+
 				</div>
 			</div>
 			<div class="4u 12u$(medium)">
