@@ -176,6 +176,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Email required");	
 								return false;
 							}
+							testVal = /\w@\w.\w/;
+							if(!testVal.test(email)) {
+								alert("Email must be in format (text)@(text).(text);
+								return false;
+							}
 							if(address == "") {
 								alert("Address required");	
 								return false;
@@ -184,20 +189,45 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("City required");	
 								return false;
 							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(city)) {
+								alert("City can only be letters or whitespace");
+								return false;
+							}	
 							if(state == "") {
 								alert("State required");	
+								return false;
+							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(state)) {
+								alert("State can only be letters or whitespace");
 								return false;
 							}
 							if(zipcode == "") {
 								alert("Zipcode required");	
 								return false;
 							}
+							testVal = /^[0-9]/;
+							if(!testVal.test(zipcode)) {
+								alert("Zipcode can only be numbers");
+								return false;
+							}
 							if(phone == "") {
 								alert("Phone number required");	
 								return false;
 							}
+							testVal = /^[0-9]/;
+							if(!testVal.test(phone)) {
+								alert("Phone number can only be numbers");
+								return false;
+							}
 							if(birthday == "") {
 								alert("Birthday required");	
+								return false;
+							}
+							testVal = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})/;
+							if(!testVal.test(birthday)) {
+								alert("Birthday must be in format MM/DD/YYYY");
 								return false;
 							}
 							if(username == "") {
