@@ -149,7 +149,24 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<br>
 						<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
 					</form>
+					<?php
+					// define variables and set to empty values
+					$nameErr = $emailErr = $addressErr = $cityErr = $stateErr = $zipcodeErr = $phoneErr = $birthdayErr = $usernameErr = $passwordErr = "";
+					$name = $email = $address = $city = $state = $zipcode = $phone = $birthday = $username = $password = "";
 
+					if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  						$name = $_POST["form_name"];
+  						$email = $_POST["form_email"];
+						$address = $_POST["form_address"];
+  						$city = $_POST["form_city"];
+  						$state = $_POST["form_state"];
+  						$zipcode = $_POST["form_zipcode"];
+						$phone = $_POST["form_phone"];
+						$birthday = $_POST["form_birthday"];
+						$username = $_POST["form_username"];
+						$password = $_POST["form_password"];
+					}
+					?>
 				</div>
 			</div>
 			<div class="4u 12u$(medium)">
