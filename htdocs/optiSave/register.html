@@ -69,7 +69,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 					<!-- Content Form -->
 					<h2> Registration </h2>
-					<form method="post" action="<?php echo htmlspecialchars($_SERVER[\"PHP_SELF\"]);?>">
+					<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 						<div class="form-group">
 							<label for="example-text-input" class="col-2 col-form-label">First and Last Name</label>
 							<div class="col-10">
@@ -169,11 +169,17 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     							$nameErr = "Name is required";
   						} else {
     							$name = $_POST["form_name"];
+							if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      								$nameErr = "Only letters and white space allowed for Name"; 
+    							}
   						}
   						if (empty($_POST["form_email"])) {
     							$emailErr = "Email is required";
   						} else {
     							$email = $_POST["form_email"];
+    							if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      								$emailErr = "Invalid email format"; 
+    							}
   						}
   						if (empty($_POST["form_address"])) {
     							$addressErr = "Address is required";
@@ -184,24 +190,36 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     							$cityErr = "City is required";
   						} else {
     							$city = $_POST["form_city"];
+							if (!preg_match("/^[a-zA-Z ]*$/",$city)) {
+      								$cityErr = "Only letters and white space allowed for City"; 
+    							}
   						}
   						if (empty($_POST["form_state"])) {
     							$stateErr = "State is required";
   						} else {
     							$state = $_POST["form_state"];
+							if (!preg_match("/^[a-zA-Z ]*$/",$state)) {
+      								$stateErr = "Only letters and white space allowed for State"; 
+    							}
   						}
   						if (empty($_POST["form_zipcode"])) {
     							$zipcodeErr = "Zipcode is required";
   						} else {
     							$zipcode = $_POST["form_zipcode"];
+							if (!preg_match("/^[0-9]*$/",$zipcode)) {
+      								$zipcodeErr = "Only numbers allowed for Zipcode"; 
+    							}
   						}
   						if (empty($_POST["form_phone"])) {
     							$phoneErr = "Phone is required";
   						} else {
     							$phone = $_POST["form_phone"];
+							if (!preg_match("/^[0-9 .()-]*$/",$phone)) {
+      								$phoneErr = "Only numbers, dashes, parentheses, or dots allowed for Phone"; 
+    							}
   						}
   						if (empty($_POST["form_birthday"])) {
-    							$birthdayErr = "Name is required";
+    							$birthdayErr = "Birthday is required";
   						} else {
     							$birthday = $_POST["form_birthday"];
   						}
@@ -211,7 +229,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     							$username = $_POST["form_username"];
   						}
   						if (empty($_POST["form_password"])) {
-    							$passwordErr = "Name is required";
+    							$passwordErr = "Password is required";
   						} else {
     							$password = $_POST["form_password"];
   						}
