@@ -93,13 +93,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	{
 								echo "<h2> Successfully Registered! </h2>";
 	            	echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
-								//echo "<div class='5u 12u(medium)'>";
-								// echo "<ul>";
-
+								echo "<p></p>";
+								echo "<p></p>";
 					  	  echo "<a href='#' class='button big icon fa-arrow-circle-right'>View your Profile</a>";
 								echo "<a href='#' class='button alt big icon'>Search Coupons</a>";
-								// echo "</ul>";
-								//echo "</div>";
 	          	}
 	          	mysqli_close($con);
     				}
