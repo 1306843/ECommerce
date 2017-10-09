@@ -77,7 +77,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
    					{
     				echo "<h2> Username has been taken! <h2>";
 						echo "<h6> <h6>";
-						echo "<div><a href='register.html' class='button alt big icon'>Fill out form again.</a></div>";
+						echo "<div><a href='#' onclick='window.history.back();' class='button alt big icon'>Fill out form again.</a></div>";
 
    					}
  					else
