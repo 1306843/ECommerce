@@ -69,19 +69,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 					<!-- Content Form -->
 					<h2> Registration </h2>
-					<form>
+					<form action="UserRegistered.php" method="post" onsubmit="return(formValidation());">
 						<div class="form-group">
-							<label for="example-text-input" class="col-2 col-form-label">First Name</label>
+							<label for="example-text-input" class="col-2 col-form-label">First and Last Name</label>
 							<div class="col-10">
-								<input class="form-control" type="email"  id="example-text-input">
-							</div>
-						</div>
-						<br>
-
-						<div class="form-group">
-							<label for="example-search-input" class="col-2 col-form-label">Last Name</label>
-							<div class="col-10">
-								<input class="form-control" type="text" id="example-text-input">
+								<input class="form-control" type="text" id="form_name" name="form_name">
 							</div>
 						</div>
 						<br>
@@ -89,7 +81,39 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-email-input" class="col-2 col-form-label">Email</label>
 							<div class="col-200">
-								<input class="form-control" type="email" id="example-email-input">
+								<input class="form-control" type="text" id="form_email" name="form_email">
+							</div>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<label for="example-email-input" class="col-2 col-form-label">Address</label>
+							<div class="col-200">
+								<input class="form-control" type="text" id="form_address" name="form_address">
+							</div>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<label for="example-email-input" class="col-2 col-form-label">City</label>
+							<div class="col-200">
+								<input class="form-control" type="text" id="form_city" name="form_city">
+							</div>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<label for="example-email-input" class="col-2 col-form-label">State</label>
+							<div class="col-200">
+								<input class="form-control" type="text" id="form_state" name="form_state">
+							</div>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<label for="example-email-input" class="col-2 col-form-label">Zipcode</label>
+							<div class="col-200">
+								<input class="form-control" type="text" id="form_zipcode" name="form_zipcode">
 							</div>
 						</div>
 						<br>
@@ -97,21 +121,21 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group">
 							<label for="example-tel-input" class="col-2 col-form-label">Phone Number</label>
 							<div class="col-10">
-								<input class="form-control" type="tel" id="example-tel-input">
+								<input class="form-control" type="text" id="form_phone" name="form_phone">
 							</div>
 						</div>
 						<br>
 						<div class="form-group">
 							<label for="example-date-input" class="col-2 col-form-label">Birthday</label>
 							<div class="col-10">
-								<input class="form-control" type="date" id="example-date-input">
+								<input class="form-control" type="text" id="form_birthday" name="form_birthday">
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
 							<label for="example-search-input" class="col-2 col-form-label">Username</label>
 							<div class="col-10">
-								<input class="form-control" type="text" id="example-text-input">
+								<input class="form-control" type="text" id="form_username" name="form_username">
 							</div>
 						</div>
 						<br>
@@ -119,12 +143,115 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div class="form-group row">
 							<label for="example-password-input" class="col-2 col-form-label">Password</label>
 							<div class="col-10">
-								<input class="form-control" type="password" id="example-password-input">
+								<input class="form-control" type="password" id="form_password" name="form_password">
 							</div>
 						</div>
 						<br>
-						<a href="#" class="button button-primary">Submit</a>
+						<button href="UserRegistered.php" type="submit" class="button button-primary">Submit</button>
 					</form>
+					<script type="text/javascript">
+					<!--
+						function formValidation() {
+							var name, email, address, city, state, zipcode, phone, birthday, username, password, testVal;
+							name = document.getElementById("form_name").value;
+							email = document.getElementById("form_email").value;
+							address = document.getElementById("form_address").value;
+							city = document.getElementById("form_city").value;
+							state = document.getElementById("form_state").value;
+							zipcode = document.getElementById("form_zipcode").value;
+							phone = document.getElementById("form_phone").value;
+							birthday = document.getElementById("form_birthday").value;
+							username = document.getElementById("form_username").value;
+							password = document.getElementById("form_password").value;
+							if(name == "") {
+								alert("Name required");
+								return false;
+							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(name)) {
+								alert("Name can only be letters or whitespace");
+								return false;
+							}
+							if(email == "") {
+								alert("Email required");
+								return false;
+							}
+							testVal = /\w@\w.\w/;
+							if(!testVal.test(email)) {
+								alert("Email must be in format (text)@(text).(text)");
+								return false;
+							}
+							if(address == "") {
+								alert("Address required");
+								return false;
+							}
+							if(city == "") {
+								alert("City required");
+								return false;
+							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(city)) {
+								alert("City can only be letters or whitespace");
+								return false;
+							}
+							if(state == "") {
+								alert("State required");
+								return false;
+							}
+							testVal = /^[A-Za-z ]/;
+							if(!testVal.test(state)) {
+								alert("State can only be letters or whitespace");
+								return false;
+							}
+							if(zipcode == "") {
+								alert("Zipcode required");
+								return false;
+							}
+							testVal = /^[0-9]/;
+							if(!testVal.test(zipcode)) {
+								alert("Zipcode can only be numbers");
+								return false;
+							}
+							if(phone == "") {
+								alert("Phone number required");
+								return false;
+							}
+							testVal = /^[0-9]/;
+							if(!testVal.test(phone)) {
+								alert("Phone number can only be numbers");
+								return false;
+							}
+							if(birthday == "") {
+								alert("Birthday required");
+								return false;
+							}
+							testVal = /^([0-9]{2})\/([0-9]{2})\/([0-9]{4})/;
+							if(!testVal.test(birthday)) {
+								alert("Birthday must be in format MM/DD/YYYY");
+								return false;
+							}
+							if(username == "") {
+								alert("Username required");
+								return false;
+							}
+							testVal = /^[A-Za-z0-9]{6,}/;
+							if(!testVal.test(username)) {
+								alert("Username must be at least 6 alphanumeric characters");
+								return false;
+							}
+							if(password == "") {
+								alert("Password required");
+								return false;
+							}
+							testVal = /^[A-Za-z0-9!@#$%^&*()_]{6,}/;
+							if(!testVal.test(password)) {
+								alert("Password must be at least 6 alphanumeric and/or special characters");
+								return false;
+							}
+							return true;
+					}
+					//-->
+					</script>
 				</div>
 			</div>
 			<div class="4u 12u$(medium)">
