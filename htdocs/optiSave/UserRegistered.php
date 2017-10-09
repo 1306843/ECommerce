@@ -47,8 +47,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <div id="banner-wrapper" style="margin-top: -30px;">
 	<div id="banner" class="box container">
 		<div class="row">
-			<div class="7u 12u(medium)">
-        <h2> Successfully Registered! </h2>
+			<!-- <div class="5u 12u(medium)"> -->
+
 				<p style="font-size: 35px"> <?php
            include_once("./library.php"); // To connect to the database
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -72,27 +72,43 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             $hashed_password= hash('sha256',$password);
             // session_start();
             // $_SESSION["Email"] = $email;
-            $sql="INSERT INTO registeredUsers (name, email, address, city, state, zipcode,phone,birthday,username, password)
-            VALUES  ('$name', '$email', '$address', '$city', '$state', '$zipcode','$phone','$birthday','$username',
-              '$hashed_password')";
-          if (!mysqli_query($con,$sql))
-          {
-            die('Error: ' . mysqli_error($con));
-          }
-          else
-          {
-            echo "Welcome $name. You are registered as $username.";
-          }
-          mysqli_close($con);
+						$sql=mysqli_query($con, "SELECT * FROM registeredUsers WHERE username='$username'");
+ 						if(mysqli_num_rows($sql)>=1)
+   					{
+    				echo "<h2> Username has been taken! <h2>";
+						echo "<h6> <h6>";
+						echo "<div><a href='register.html' class='button alt big icon'>Fill out form again.</a></div>";
+
+   					}
+ 					else
+    				{
+						$sql="INSERT INTO registeredUsers (name, email, address, city, state, zipcode,phone,birthday,username, password)
+	            VALUES  ('$name', '$email', '$address', '$city', '$state', '$zipcode','$phone','$birthday','$username',
+	              '$hashed_password')";
+	          	if (!mysqli_query($con,$sql))
+	          	{
+	            	die('Error: ' . mysqli_error($con));
+	          	}
+	          	else
+	          	{
+								echo "<h2> Successfully Registered! </h2>";
+	            	echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
+								//echo "<div class='5u 12u(medium)'>";
+								// echo "<ul>";
+
+					  	  echo "<a href='#' class='button big icon fa-arrow-circle-right'>View your Profile</a>";
+								echo "<a href='#' class='button alt big icon'>Search Coupons</a>";
+								// echo "</ul>";
+								//echo "</div>";
+	          	}
+	          	mysqli_close($con);
+    				}
+
+
           ?>
         </p>
-			</div>
-			<div class="5u 12u(medium)">
-				<ul>
-					<li><a href="#" class="button big icon fa-arrow-circle-right">View your Profile</a></li>
-					<li><a href="#" class="button alt big icon">Search Coupons</a></li>
-				</ul>
-			</div>
+			<!-- </div> -->
+
 		</div>
 	</div>
 </div>
