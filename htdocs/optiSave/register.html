@@ -234,8 +234,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Username required");	
 								return false;
 							}
+							testVal = /^[A-Za-z0-9]{6,}/;
+							if(!testVal.test(username)) {
+								alert("Username must be at least 6 alphanumeric characters");
+								return false;
+							}
 							if(password == "") {
 								alert("Password required");	
+								return false;
+							}
+							testVal = /^[A-Za-z0-9!@#$%^&*()_]{6,}/;
+							if(!testVal.test(password)) {
+								alert("Password must be at least 6 alphanumeric and/or special characters");
 								return false;
 							}
 							return true;
