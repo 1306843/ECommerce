@@ -47,8 +47,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <div id="banner-wrapper" style="margin-top: -30px;">
 	<div id="banner" class="box container">
 		<div class="row">
-			<!-- <div class="5u 12u(medium)"> -->
-
 				<p style="font-size: 35px"> <?php
            include_once("./library.php"); // To connect to the database
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -105,7 +103,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
           ?>
         </p>
 			<!-- </div> -->
-
+			<form action="https://test.bitpay.com/checkout" method="post" >
+			  <input type="hidden" name="action" value="checkout" />
+			  <input type="hidden" name="posData" value="" />
+			  <input type="hidden" name="data" value="BnmpqZPilxSU1AhU/aAFjX0vXWSpz0Pzp+ugvfwBh0PwuYKFiNjbtV9aTKpv4YE+7q65FCZ1iLPI1CWdfIdVigfNOVlZ2yWVsSWF/K4nONw=" />
+			  <input type="image" src="https://test.bitpay.com/img/button-small.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
+			</form>
 		</div>
 	</div>
 </div>
