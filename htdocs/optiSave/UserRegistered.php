@@ -94,7 +94,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								echo "<p></p>";
 								echo "<p></p>";
 					  	  echo "<a href='#' class='button big icon fa-arrow-circle-right'>View your Profile</a>";
-								echo "<a href='#' class='button alt big icon'>Search Coupons</a>";
+								echo "<a href='shop.html' class='button alt big icon'>Get Started</a>";
 	          	}
 	          	mysqli_close($con);
     				}
@@ -103,12 +103,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
           ?>
         </p>
 			<!-- </div> -->
-			<form action="https://test.bitpay.com/checkout" method="post" >
-			  <input type="hidden" name="action" value="checkout" />
-			  <input type="hidden" name="posData" value="" />
-			  <input type="hidden" name="data" value="BnmpqZPilxSU1AhU/aAFjX0vXWSpz0Pzp+ugvfwBh0PwuYKFiNjbtV9aTKpv4YE+7q65FCZ1iLPI1CWdfIdVigfNOVlZ2yWVsSWF/K4nONw=" />
-			  <input type="image" src="https://test.bitpay.com/img/button-small.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
-			</form>
 		</div>
 	</div>
 </div>
