@@ -247,7 +247,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Address required");
 								return false;
 							}
-							testVal = /^[A-Za-z0-9#. ]/;
+							testVal = /[A-Za-z0-9#. ]+/;
 							if(!testVal.test(address)) {
 								alert("Address can only contain alphanumeric characters, #, ., or whitespace");
 								return false;
