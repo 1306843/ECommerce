@@ -213,7 +213,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 					<script type="text/javascript">
 					<!--
 						function formValidation() {
-							var name, email, address, city, state, zipcode, phone, birthday, username, password, testVal;
+							var name, email, address, city, state, zipcode, phone, birthday, username, password, testVal, testVal2;
 							name = document.getElementById("form_name").value;
 							email = document.getElementById("form_email").value;
 							address = document.getElementById("form_address").value;
@@ -225,27 +225,32 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							username = document.getElementById("form_username").value;
 							password = document.getElementById("form_password").value;
 							if(name == "") {
-								alert("Name required");
+								alert("Name required (letters and whitespace only");
 								return false;
 							}
 							testVal = /^[A-Za-z ]/;
 							if(!testVal.test(name)) {
-								alert("Name can only be letters or whitespace");
+								alert("Name can only be letters and whitespace");
 								return false;
 							}
 							if(email == "") {
 								alert("Email required");
 								return false;
 							}
-							testVal = /\w@\w.\w/;
-							if(!testVal.test(email)) {
-								alert("Email must be in format (text)@(text).(text)");
+							testVal = /\w@\w.com/;
+							testVal2 = /\w@\w.net/;
+							if(!testVal.test(email) && !testVal2.test(email)) {
+								alert("Email must be in format (text)@(text).com or (text)@(text).net");
 								return false;
 							}
 							if(address == "") {
 								alert("Address required");
 								return false;
 							}
+							testVal = /^[A-Za-z0-9#. ]/;
+							if(!testVal.test(address)) {
+								alert("Address can only contain alphanumeric characters, #, ., or whitespace");
+								return false;
 							if(city == "") {
 								alert("City required");
 								return false;
