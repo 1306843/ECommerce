@@ -228,7 +228,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Name required (letters and whitespace only");
 								return false;
 							}
-							testVal = /^[A-Za-z ]/;
+							testVal = /[A-Za-z ]+/;
 							if(!testVal.test(name)) {
 								alert("Name can only be letters and whitespace");
 								return false;
