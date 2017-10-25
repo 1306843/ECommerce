@@ -49,6 +49,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<div id="banner" class="box container">
 		<div class="row">
 				<p style="font-size: 35px"> <?php
+	   use PHPMailer\PHPMailer\PHPMailer;
+	   use PHPMailer\PHPMailer\Exception;
            include_once("./library.php"); // To connect to the database
            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
            // Check connection
@@ -92,11 +94,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	{
 								echo "<h2> Successfully Registered! </h2>";
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
-								use PHPMailer\PHPMailer\PHPMailer;
-								use PHPMailer\PHPMailer\Exception;
-								require 'path/to/PHPMailer/src/Exception.php';
-								require 'path/to/PHPMailer/src/PHPMailer.php';
-								require 'path/to/PHPMailer/src/SMTP.php';
+								require 'PHPMailer/src/Exception.php';
+								require 'PHPMailer/src/PHPMailer.php';
+								require 'PHPMailer/src/SMTP.php';
 								$mail = new PHPMailer;
 								$mail->isSMTP();
 								// 2 = client and server messages
@@ -105,13 +105,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								$mail->Port = 587;
 								$mail->SMTPSecure = 'tls';
 								$mail->SMTPAuth = true;
-								$mail->Username = $username;
-								$mail->Password = $password;
-								$mail->setFrom('jb3bt@virginia.edu', 'Your friends at optiSave');
+								$mail->Username = 'jedbarson@gmail.com';
+								$mail->Password = 'jedib0501';
+								$mail->setFrom('jedbarson@gmail.com', 'Your friends at optiSave');
 								$mail->addAddress($email, $name);
 								$mail->Subject = 'Welcome to optiSave!';
 								$mail->AltBody = 'Thanks for joining optiSave! We\'re glad to have you';
-								$mail->send();
+								if(!$mail->send()) {
+									echo 'Message could not be sent.';
+									echo 'Mailer Error : ' . $mail->ErrorInfo;
+								} else {
+									echo 'Message sent!';
+								}
 								echo "<p></p>";
 								echo "<p></p>";
 					  	  		echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
