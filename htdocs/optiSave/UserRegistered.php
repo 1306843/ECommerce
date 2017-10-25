@@ -91,7 +91,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	else
 	          	{
 								echo "<h2> Successfully Registered! </h2>";
-	            	echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
+	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
+								use PHPMailer\PHPMailer\PHPMailer;
+								use PHPMailer\PHPMailer\Exception;
+
+								require 'path/to/PHPMailer/src/Exception.php';
+								require 'path/to/PHPMailer/src/PHPMailer.php';
+								require 'path/to/PHPMailer/src/SMTP.php';
+								$mail = new PHPMailer;
+								$mail->isSMTP();
+								// 2 = client and server messages
+								$mail->SMTPDebug = 2;
+								$mail->Host = 'smtp.gmail.com';
+								$mail->Port = 587;
+								$mail->SMTPSecure = 'tls';
+								$mail->SMTPAuth = true;
+								$mail->Username = $email;
 								echo "<p></p>";
 								echo "<p></p>";
 					  	  echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
