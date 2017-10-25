@@ -94,7 +94,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
 								use PHPMailer\PHPMailer\PHPMailer;
 								use PHPMailer\PHPMailer\Exception;
-
 								require 'path/to/PHPMailer/src/Exception.php';
 								require 'path/to/PHPMailer/src/PHPMailer.php';
 								require 'path/to/PHPMailer/src/SMTP.php';
@@ -106,10 +105,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								$mail->Port = 587;
 								$mail->SMTPSecure = 'tls';
 								$mail->SMTPAuth = true;
-								$mail->Username = $email;
+								$mail->Username = $username;
+								$mail->Password = $password;
+								$mail->setFrom('jb3bt@virginia.edu', 'Your friends at optiSave');
+								$mail->addAddress($email, $name);
+								$mail->Subject = 'Welcome to optiSave!';
+								$mail->AltBody = 'Thanks for joining optiSave! We\'re glad to have you';
+								$mail->send();
 								echo "<p></p>";
 								echo "<p></p>";
-					  	  echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
+					  	  		echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
 								echo "<a href='shop.html' class='button alt big icon'>Get Started</a>";
 	          	}
 	          	mysqli_close($con);
