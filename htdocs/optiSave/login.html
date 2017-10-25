@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!--
 Verti by HTML5 UP
 html5up.net | @ajlkn
@@ -34,27 +34,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<nav id="nav">
 							<ul>
 								<li><a href="index.html">Home</a></li>
-								<!-- <li>
-								<a href="#">Dropdown</a>
-								<ul>
-								<li><a href="#">Feature 1</a></li>
-								<li><a href="#">Feature 2</a></li>
-								<li>
-								<a href="#">Feature 3</a>
-								<ul>
-								<li><a href="#">sub-feature 1</a></li>
-								<li><a href="#">sub-feature 2</a></li>
-								<li><a href="#">sub-feature 3</a></li>
-								<li><a href="#">sub-feature 4</a></li>
+								<li><a href="about-us.html">About Us</a></li>
+								<li><a href="register.html">Register</a></li>
+								<li class="current"><a href="login.html">Login</a></li>
 							</ul>
-						</li>
-						<li><a href="#">Feature 4</a></li>
-					</ul>
-				</li> -->
-				<li><a href="about-us.html">About Us</a></li>
-				<li><a href="register.html">Register</a></li>
-				<li class="current"><a href="login.html">Login</a></li>
-			</ul>
 		</nav>
 
 	</header>
@@ -66,15 +49,15 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 		<div id="content">
 
 			<!-- Content -->
-			<form>
+			<form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 				<div class="form-group">
-					<h3 for="exampleInputEmail1">Username or Email Address</h3>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username or email">
+					<h3 for="exampleInputEmail1">Username</h3>
+					<input type="text" class="form-control" id="login_user" name="login_user" placeholder="Enter username or email">
 				</div>
 				<br>
 				<div class="form-group">
 					<h3 for="exampleInputPassword1">Password</h3>
-					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					<input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password">
 				</div>
 				<div class="form-check">
 					<label class="form-check-label">
@@ -82,7 +65,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						Remember Me
 					</label>
 				</div>
-				<a href="#" type="submit" class="button button-primary">Submit</a>
+				<button type="submit" class="button button-primary" name="submit">Login</button>
 			</form>
 		</div>
 	</div>
@@ -158,3 +141,43 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 </body>
 </html>
+
+<?php
+	require_once('./library.php');
+	$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+	if (mysqli_connect_errno())
+	{
+	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	 }
+
+	$username = $_POST['login_user'];
+	$password = $_POST['login_password'];
+	$passHash = password_hash($password, PASSWORD_DEFAULT);
+
+	$query1 = "SELECT * FROM registeredUsers WHERE username='$username'";
+	$result = $con->query($query1);
+	//session_start();
+	//$_SESSION['username'] = $username;
+	//Username exists
+	if(isset($_POST['submit'])){
+		if($result->num_rows == 1) {
+			$row = mysqli_fetch_array($result);
+			if(password_verify($password,$row['password'])){
+				echo "<script> window.location.assign('UserLoginSuccess.html'); </script>";
+			}
+			else{
+				$message = "Password incorrect.\\nTry again.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			}
+		}
+		//Username does not exists
+			else{
+				$message = "Username incorrect.\\nTry again.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			}
+		}
+			mysqli_close($con);
+
+
+?>

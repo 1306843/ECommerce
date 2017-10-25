@@ -1,0 +1,16 @@
+Need to implement session to keep a user logged in
+
+Change the index.html, about-us.html navbar to show "logged in" nav options
+  - Logged in options: Home, About Us, View Profile, Logout
+  - Logged out options: Home, About Us, Register, Login
+
+Implement log out functionality
+
+profile.html:
+  - display all user info (from database)
+  - edit user info (edit the database too)
+  - (additional function) Upload profile picture, save it to database
+
+shop.html:
+  - save user's subscription to database (another table userInformation)
+        - store profile picture, subscription, coupons? 

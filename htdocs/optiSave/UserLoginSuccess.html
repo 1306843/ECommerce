@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!--
 Verti by HTML5 UP
 html5up.net | @ajlkn
@@ -30,16 +30,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div>
 						</div>
 
-						<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about-us.html">About Us</a></li>
-				<!-- <li class="current"><a href="register.html">Register</a></li> -->
-								<!-- <li><a href="profile.html">View Profile</a></li> -->
-								<li><a href="login.html">Login</a></li>
-			</ul>
-		</nav>
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <!-- <li class="current"><a href="register.html">Register</a></li> -->
+                <li><a href="profile.html">View Profile</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </nav>
 
 	</header>
 </div>
@@ -48,61 +48,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <div id="banner-wrapper" style="margin-top: -30px;">
 	<div id="banner" class="box container">
 		<div class="row">
-				<p style="font-size: 35px"> <?php
-           include_once("./library.php"); // To connect to the database
-           $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-           // Check connection
-           if (mysqli_connect_errno())
-           {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            }
-            $hashed_password = null;
-            // Form the SQL query (an INSERT query)
-            $name = $_POST['form_name'];
-            $email = $_POST['form_email'];
-            $address = $_POST['form_address'];
-            $city = $_POST['form_city'];
-            $state = $_POST['form_state'];
-            $zipcode = $_POST['form_zipcode'];
-            $phone= $_POST['form_phone'];
-            $birthday = $_POST['form_birthday'];
-            $username = $_POST['form_username'];
-            $password = $_POST['form_password'];
-            $hashed_password= password_hash($password, PASSWORD_DEFAULT);
-            // session_start();
-            // $_SESSION["Email"] = $email;
-						$sql=mysqli_query($con, "SELECT * FROM registeredUsers WHERE username='$username'");
- 						if(mysqli_num_rows($sql)>=1)
-   					{
-    				echo "<h2> Username has been taken! <h2>";
-						echo "<h6> <h6>";
-						echo "<div><a href='#' onclick='window.history.back();' class='button alt big icon'>Fill out form again.</a></div>";
-
-   					}
- 					else
-    				{
-						$sql="INSERT INTO registeredUsers (name, email, address, city, state, zipcode,phone,birthday,username, password)
-	            VALUES  ('$name', '$email', '$address', '$city', '$state', '$zipcode','$phone','$birthday','$username',
-	              '$hashed_password')";
-	          	if (!mysqli_query($con,$sql))
-	          	{
-	            	die('Error: ' . mysqli_error($con));
-	          	}
-	          	else
-	          	{
-								echo "<h2> Successfully Registered! </h2>";
-	            	echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
-								echo "<p></p>";
-								echo "<p></p>";
-					  	  echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
-								echo "<a href='shop.html' class='button alt big icon'>Get Started</a>";
-	          	}
-	          	mysqli_close($con);
-    				}
-
-
-          ?>
-        </p>
+      <h2> Successful Login </h2>
+      <a href='profile.html' class='button big icon fa-arrow-circle-right'>View your Profile</a>
+      <a href='shop.html' class='button alt big icon'>Shop</a>
 			<!-- </div> -->
 		</div>
 	</div>
