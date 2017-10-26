@@ -99,8 +99,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								require 'SMTP.php';
 								$mail = new PHPMailer;
 								$mail->isSMTP();
-								// 2 = client and server messages
-								$mail->SMTPDebug = 2;
+								
+								$mail->SMTPDebug = 0;
 								$mail->Host = 'smtp.gmail.com';
 								$mail->Port = 587;
 								$mail->SMTPSecure = 'tls';
