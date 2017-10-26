@@ -94,9 +94,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	{
 								echo "<h2> Successfully Registered! </h2>";
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
-								require 'PHPMailer/src/Exception.php';
-								require 'PHPMailer/src/PHPMailer.php';
-								require 'PHPMailer/src/SMTP.php';
+								require 'Exception.php';
+								require 'PHPMailer.php';
+								require 'SMTP.php';
 								$mail = new PHPMailer;
 								$mail->isSMTP();
 								// 2 = client and server messages
