@@ -110,6 +110,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								$mail->setFrom('jedbarson@gmail.com', 'Your friends at optiSave');
 								$mail->addAddress($email, $name);
 								$mail->Subject = 'Welcome to optiSave!';
+								$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
 								$mail->AltBody = 'Thanks for joining optiSave! We\'re glad to have you';
 								if(!$mail->send()) {
 									echo 'Message could not be sent.';
