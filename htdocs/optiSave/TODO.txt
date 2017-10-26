@@ -13,4 +13,5 @@ profile.html:
 
 shop.html:
   - save user's subscription to database (another table userInformation)
-        - store profile picture, subscription, coupons? 
+        - store profile picture, subscription, coupons?
+        - the coupons they frequent  
