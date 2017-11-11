@@ -73,10 +73,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             $hashed_password= password_hash($password, PASSWORD_DEFAULT);
             // session_start();
             // $_SESSION["Email"] = $email;
-						$sql=mysqli_query($con, "SELECT * FROM registeredUsers WHERE username='$username'");
+						$sql=mysqli_query($con, "SELECT * FROM registeredUsers WHERE username='$username' OR email='$email'");
  						if(mysqli_num_rows($sql)>=1)
    					{
-    				echo "<h2> Username has been taken! <h2>";
+    				echo "<h2> Username or email has been taken! <h2>";
 						echo "<h6> <h6>";
 						echo "<div><a href='#' onclick='window.history.back();' class='button alt big icon'>Fill out form again.</a></div>";
 
