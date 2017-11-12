@@ -31,15 +31,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						</div>
 
             <!-- Nav -->
-            <nav id="nav">
-              <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <!-- <li class="current"><a href="register.html">Register</a></li> -->
-                <li><a href="profile.html">View Profile</a></li>
-                <li><a href="#">Logout</a></li>
-              </ul>
-            </nav>
+						<nav id="nav" >
+							<ul>
+								<li class="current"><a href="index.html">Home</a></li>
+				<li><a href="about-us.html">About Us</a></li>
+				<li><a href="register.html">Register</a></li>
+				<li><a href="login.php">Login</a></li>
+			</ul>
+		</nav>
 
 	</header>
 </div>
@@ -48,9 +47,22 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <div id="banner-wrapper" style="margin-top: -30px;">
 	<div id="banner" class="box container">
 		<div class="row">
-      <h2> Successful Login </h2>
-      <a href='profile.html' class='button big icon fa-arrow-circle-right'>View your Profile</a>
-      <a href='shop.html' class='button alt big icon'>Shop</a>
+      <h2> <?php
+         session_start();
+         if(!isset($_SESSION['user'])){
+           echo "ERROR: not logged in. Redirecting to home page.";
+           header('Refresh: 2; URL = index.html');
+         }
+         else{
+         echo '<strong> You have logged out as ' . $_SESSION['user'] . '</strong><br> Redirecting to home page.';
+         unset($_SESSION['user']);
+         unset($_SESSION['pass']);
+         session_destroy();
+         header('Refresh: 2; URL = index.html');
+       }
+      ?>  </h2>
+      <!-- <a href='login.php' class='button big icon fa-arrow-circle-right'>Login</a>
+      <a href='index.html' class='button alt big icon'>Home</a> -->
 			<!-- </div> -->
 		</div>
 	</div>
@@ -65,7 +77,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<section class="widget contact">
 					<h3>Email</h3>
 					<ul>
-						<li><a href="mailto:apn2my@virginia.edu,ntg9vz@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
+						<li><a href="mailto:apn2my@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
 					</ul>
 				</section>
 			</div>

@@ -4,6 +4,7 @@ Verti by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<?php session_start(); ?>
 <html>
 <head>
 	<title>optiSave</title>
@@ -59,12 +60,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 					<h3 for="exampleInputPassword1">Password</h3>
 					<input type="password" class="form-control" id="login_password" name="login_password" placeholder="Password">
 				</div>
-				<div class="form-check">
+				<!-- <div class="form-check">
 					<label class="form-check-label">
 						<input type="checkbox" class="form-check-input">
 						Remember Me
 					</label>
-				</div>
+				</div> -->
+				<br>
 				<button type="submit" class="button button-primary" name="submit">Login</button>
 			</form>
 		</div>
@@ -81,7 +83,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<section class="widget contact">
 					<h3>Email</h3>
 					<ul>
-						<li><a href="mailto:apn2my@virginia.edu,ntg9vz@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
+						<li><a href="mailto:apn2my@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
 					</ul>
 				</section>
 			</div>
@@ -141,7 +143,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 </body>
 </html>
-
 <?php
 	require_once('./library.php');
 	$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -151,20 +152,19 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	 }
 
-	$username = $_POST['login_user'];
-	$password = $_POST['login_password'];
-	$passHash = password_hash($password, PASSWORD_DEFAULT);
-
-	$query1 = "SELECT * FROM registeredUsers WHERE username='$username'";
-	$result = $con->query($query1);
-	//session_start();
-	//$_SESSION['username'] = $username;
 	//Username exists
 	if(isset($_POST['submit'])){
+		$username = $_POST['login_user'];
+		$_SESSION['user'] = $username;
+		$password = $_POST['login_password'];
+		$_SESSION['pass'] = $password;
+		$passHash = password_hash($password, PASSWORD_DEFAULT);
+		$query1 = "SELECT * FROM registeredUsers WHERE username='$username'";
+		$result = $con->query($query1);
 		if($result->num_rows == 1) {
 			$row = mysqli_fetch_array($result);
 			if(password_verify($password,$row['password'])){
-				echo "<script> window.location.assign('UserLoginSuccess.html'); </script>";
+				echo "<script> window.location.assign('UserLoginSuccess.php'); </script>";
 			}
 			else{
 				$message = "Password incorrect.\\nTry again.";

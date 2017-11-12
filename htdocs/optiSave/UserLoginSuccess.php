@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!--
 Verti by HTML5 UP
 html5up.net | @ajlkn
@@ -14,9 +14,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="images/pic08.jpg"/>
-
 </head>
-<body class="homepage">
+<body class="right-sidebar">
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -31,63 +30,37 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<div>
 						</div>
 
-						<!-- Nav -->
-						<nav id="nav" >
-							<ul>
-								<li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <!-- <li><a href="register.html">Register</a></li> -->
-                <li class="current"><a href="profile.html">View Profile</a></li>
-                <li><a href="#">Logout</a></li>
-			</ul>
-		</nav>
+            <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <!-- <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li> -->
+                <!-- <li class="current"><a href="register.html">Register</a></li> -->
+                <li><a href="profile.php">View Profile</a></li>
+								<li><a href="shop.php">Shop</a></li>
+                <li><a href="logout.php">Logout</a></li>
+              </ul>
+            </nav>
 
 	</header>
 </div>
+
 <!-- Banner -->
 <div id="banner-wrapper" style="margin-top: -30px;">
 	<div id="banner" class="box container">
 		<div class="row">
-      <div class="7u 12u(medium)">
-      <p> Welcome user's first and last name </p>
-    </div>
-    <div class="5u 12u(medium)">
-      <img src="images/ashley_founder.jpg" alt="" style="width:200px;height:200px;" />
-    </div>
+      <h2> <?php
+				session_start();
+				echo "<center>Hello!</center>";
+				echo "<strong>You are logged in as </strong> " .  $_SESSION['user'] . ".";
+				echo " ";
+				?>  </h2>
+      <a href='profile.php' class='button big icon fa-arrow-circle-right'>View your Profile</a>
+      <a href='shop.php' class='button alt big icon'>Shop</a>
+			<!-- </div> -->
 		</div>
 	</div>
 </div>
-
-<!-- Features -->
-<div id="features-wrapper">
-	<div class="container">
-		<div class="row">
-      <div class="4u 12u(medium)">
-        <section class="box feature">
-			       <p> you are currently have __ membership </p>
-           </section>
-      </div>
-		</div>
-	</div>
-</div>
-
-<!-- Main -->
-<div id="main-wrapper">
-	<div class="container">
-		<div class="row 200%">
-			<div class="12u 12u(medium) important(medium)">
-
-				<!-- Content -->
-				<div id="content" style="margin-bottom: -50px; margin-top: -5px">
-					<p> More user info (address, bday etc) </p>
-          <button class=btn btn-primary> edit info </button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-
 <!-- Footer -->
 <div id="footer-wrapper" style="margin-top: -45px; margin-bottom: -20px">
 	<footer id="footer" class="container">
@@ -98,7 +71,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<section class="widget contact">
 					<h3>Email</h3>
 					<ul>
-						<li><a href="mailto:apn2my@virginia.edu,ntg9vz@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
+						<li><a href="mailto:apn2my@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
 					</ul>
 				</section>
 			</div>

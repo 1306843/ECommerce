@@ -1,4 +1,13 @@
 <!DOCTYPE HTML>
+<?php
+session_start();
+if(!isset($_SESSION['user'])){
+  $message = "ERROR: not logged in. Redirecting to home page.";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+  header('Refresh: 2; URL = index.html');
+  exit;
+}
+?>
 <!--
 Verti by HTML5 UP
 html5up.net | @ajlkn
@@ -33,11 +42,12 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<!-- Nav -->
 						<nav id="nav" >
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about-us.html">About Us</a></li>
+								<!-- <li><a href="index.html">Home</a></li>
+								<li><a href="about-us.html">About Us</a></li> -->
 								<!-- <li><a href="register.html">Register</a></li> -->
-								<li class="current"><a href="profile.html">View Profile</a></li>
-								<li><a href="#">Logout</a></li>
+								<li><a href="profile.html">View Profile</a></li>
+								<li class="current"><a href="shop.php">Shop </a></li>
+								<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</nav>
 

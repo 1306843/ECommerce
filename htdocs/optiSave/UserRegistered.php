@@ -92,6 +92,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	}
 	          	else
 	          	{
+								session_start();
+								$_SESSION['user'] = $username;
 								echo "<h2> Successfully Registered! </h2>";
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
 								require 'Exception.php';
@@ -120,8 +122,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								}
 								echo "<p></p>";
 								echo "<p></p>";
-					  	  echo "<a href='login.html' class='button big icon fa-arrow-circle-right'>First Login</a>";
-								echo "<a href='shop.html' class='button alt big icon'>Get Started</a>";
+					  	  echo "<a href='login.php' class='button big icon fa-arrow-circle-right'>First Login</a>";
+								echo "<a href='shop.php' class='button alt big icon'>Get Started</a>";
 	          	}
 	          	mysqli_close($con);
     				}
