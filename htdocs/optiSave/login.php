@@ -37,7 +37,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								<li><a href="index.html">Home</a></li>
 								<li><a href="about-us.html">About Us</a></li>
 								<li><a href="register.html">Register</a></li>
-								<li class="current"><a href="login.html">Login</a></li>
+								<li class="current"><a href="login.php">Login</a></li>
 							</ul>
 		</nav>
 

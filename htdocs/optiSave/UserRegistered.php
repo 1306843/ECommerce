@@ -37,7 +37,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								<li><a href="about-us.html">About Us</a></li>
 				<!-- <li class="current"><a href="register.html">Register</a></li> -->
 								<!-- <li><a href="profile.html">View Profile</a></li> -->
-								<li><a href="login.html">Login</a></li>
+								<li><a href="login.php">Login</a></li>
 			</ul>
 		</nav>
 
@@ -92,8 +92,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	}
 	          	else
 	          	{
-								session_start();
-								$_SESSION['user'] = $username;
+								// session_start();
+								// $_SESSION['user'] = $username;
 								echo "<h2> Successfully Registered! </h2>";
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
 								require 'Exception.php';
@@ -145,7 +145,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<section class="widget contact">
 					<h3>Email</h3>
 					<ul>
-						<li><a href="mailto:apn2my@virginia.edu,ntg9vz@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
+						<li><a href="mailto:apn2my@virginia.edu,jb3bt@virginia.edu" class="icon fa-envelope-o" ><span class="label"></span></a></li>
 					</ul>
 				</section>
 			</div>

@@ -34,14 +34,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<nav id="nav" >
 							<ul>
 								<li class="current"><a href="index.html">Home</a></li>
-				<li><a href="about-us.html">About Us</a></li>
-				<li><a href="register.html">Register</a></li>
-				<li><a href="login.php">Login</a></li>
-			</ul>
-		</nav>
-
-	</header>
-</div>
+								<li><a href="about-us.html">About Us</a></li>
+								<li><a href="register.html">Register</a></li>
+								<li><a href="login.php">Login</a></li>
+							</ul>
+						</nav>
+					</header>
+				</div>
 
 <!-- Banner -->
 <div id="banner-wrapper" style="margin-top: -30px;">
