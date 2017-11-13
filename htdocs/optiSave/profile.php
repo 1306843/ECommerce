@@ -26,8 +26,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
   <style>
   nav ul{height:250px; width:100%;}
   nav ul{overflow:hidden; overflow-y:scroll;}
-input[type=text] {
-    width: 130px;
+  input[type=text] {
+    width: 1000px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -37,12 +37,24 @@ input[type=text] {
     background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    -webkit-transition: height 0.0s ease-in-out;
+    transition: width 0.0s ease-in-out;
 }
 
 input[type=text]:focus {
     width: 100%;
+}
+.wrapper{
+    width: 1000px;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.slide{
+    /*background: #ccc;*/
+    height: 200px;
+    display: inline-block;
+    width: 200px;
 }
   </style>
 </head>
@@ -90,19 +102,7 @@ input[type=text]:focus {
           $query1 = "SELECT * FROM registeredUsers WHERE username='$session_user'";
           $result = $con->query($query1);
           $row = mysqli_fetch_array($result);
-
-          // echo $session_user . "<br>";
-          // echo $row['username'] . "<br>";
-          // echo $row['user_id'] . "<br>";
           echo $row['name'] . "'s Homepage" . "<br>";
-          // echo $row['email'] . "<br>";
-          //echo $row['address'] . "<br>";
-          // echo $row['city'] . "<br>";
-          // echo $row['state'] . "<br>";
-          // echo $row['zipcode'] . "<br>";
-          // echo $row['phone'] . "<br>";
-          // echo $row['birthday'] . "<br>";
-
         ?> </h2>
     </div>
     <div class="5u 12u(medium)">
@@ -116,9 +116,39 @@ input[type=text]:focus {
 <div id="features-wrapper">
 	<div class="container">
 		<div class="row">
-      <div class="4u 12u(medium)">
+      <div class="7u 12u(medium)">
         <section class="box feature">
-			       <p> you are currently have __ membership </p>
+               <?php
+               require_once('./library.php');
+               $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+               if (mysqli_connect_errno())
+               {
+                echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                }
+                 $session_user = $_SESSION['user'];
+                 $query1 = "SELECT * FROM userMembership WHERE username='$session_user'";
+                 $result = $con->query($query1);
+                 $row = mysqli_fetch_array($result);
+                 if($row['membership_type']==null){
+                   echo "<strong style='font-size:20px; margin:25px;'>You currently do not have a membership! </strong>";
+                   echo "<br>";
+                   echo "<a style='font-size:18px; margin:25px;' class='icon fa-arrow-circle-o-left' href='shop.php'> Select Membership </a>";
+                 }
+                 else{
+                   echo "<strong style='font-size:22px; margin:25px;'> Membership Status: </strong><em style='font-size:20px; color:DeepSkyBlue;'>" . $row['membership_type'] . "</em>";
+                  //  if($row['membership_type'] == "Basic"){
+                  //    echo "<center><h2 style='color:DimGrey;margin-bottom:50px;'>" . $row['membership_type'] . "</h2></center>";
+                  //  }
+                  //  elseif($row['membership_type'] == "Premium"){
+                  //    echo "<center><h1 style='color:DarkCyan;'>" . $row['membership_type'] . "</h1></center>";
+                  //  }
+                  //  elseif($row['membership_type'] == "Gold"){
+                  //    echo "<h2 style='color:GoldenRod'>" . $row['membership_type'] . "</h2>";
+                  //  }
+
+                 }
+
+               ?>
            </section>
       </div>
 		</div>
@@ -191,60 +221,60 @@ input[type=text]:focus {
 <!-- Features -->
 <div id="features-wrapper">
 	<div class="container">
+    <h2> You may also like... </h2>
 		<div class="row">
 			<div class="4u 12u(medium)">
-
-				<!-- Box -->
-				<section class="box feature">
-					<a href="#" class="image featured"><img src="images/personalized.jpg" alt="" /></a>
-					<div class="inner">
-						<header>
-							<h2>New Business 1</h2>
-							<p>blah</p>
-						</header>
-						<p>suggestions</p>
-					</div>
-				</section>
-
-			</div>
-			<div class="4u 12u(medium)">
-				<!-- Box -->
-				<section class="box feature">
-					<a href="#" class="image featured"><img src="images/notification.jpg" alt="" /></a>
-          <div class="inner">
-						<header>
-							<h2>New Business 2</h2>
-							<p>blah</p>
-						</header>
-						<p>suggestions</p>
-					</div>
-				</section>
-
-			</div>
-			<div class="4u 12u(medium)">
-
-				<!-- Box -->
-				<section class="box feature">
-					<a href="#" class="image featured"><img src="images/why.jpg" alt="" /></a>
-          <div class="inner">
-						<header>
-							<h2>New Business 3</h2>
-							<p>blah</p>
-						</header>
-						<p>suggestions</p>
-					</div>
-				</section>
-
+        <div class="wrapper">
+          <div id="slider4" class="text-center">
+            <div class="slide">
+              <img src="images/cereal.jpg">
+                <p style="font-weight: bold;">$1.00 off any <br> Big G Cereal</p>
+            </div>
+          <div class="slide">
+            <img src="images/cinna.jpg">
+              <p style="font-weight: bold;">Buy one get one free <br> any Pillsbury</p>
+          </div>
+          <div class="slide">
+            <img src="images/gogurt.jpg">
+              <p style="font-weight: bold;">$1.00 off any <br> two Yoplait products</p>
+         </div>
+         <div class="slide">
+           <img src="images/fiberone.jpg">
+             <p style="font-weight: bold;">$0.25 off any <br> Fiber One Granola</p>
+        </div>
+        <div class="slide">
+          <img src="images/soup.jpg">
+            <p style="font-weight: bold;">2 Progresso Soups <br> cans for 1</p>
+        </div>
+          <div class="slide">
+            <img src="images/bounty.jpg">
+              <p style="font-weight: bold;">$0.80 off <br> Bounty Products</p>
+          </div>
+          <div class="slide">
+            <img src="images/hamhelp.jpg">
+              <p style="font-weight: bold;">$2.00 for any two <br> Hamburger Helper </p>
+          </div>
+           <div class="slide">
+             <img src="images/pep.jpg">
+               <p style="font-weight: bold;">$0.50 off <br> Hormer Pepperoni products </p>
+          </div>
+    </div>
+</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<div id="banner-wrapper">
+  <div class="box container" style="margin-bottom:-40px;">
+    <center><h2 style='color:DimGray;'> Search for Coupons </h2></center>
+  </div>
+</div>
+
 <!-- Search Bar -->
-<div id="main-wrapper">
-  <div class="container">
-    <h2> Search for Coupons </h2>
-  	<div class="row">
+<div id="main-wrapper" style="background-image: url(https://shopify-ecommerce-university.s3.amazonaws.com/production/legacy/guides/50-ways/header-images/couponcodes.jpg)">
+  <div class="container" >
+  	<div class="row" >
         <input type="text" name="search" placeholder=" Search">
   	</div>
   </div>

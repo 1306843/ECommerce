@@ -45,7 +45,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								<!-- <li><a href="index.html">Home</a></li>
 								<li><a href="about-us.html">About Us</a></li> -->
 								<!-- <li><a href="register.html">Register</a></li> -->
-								<li><a href="profile.html">View Profile</a></li>
+								<li><a href="profile.php">View Profile</a></li>
 								<li class="current"><a href="shop.php">Shop </a></li>
 								<li><a href="logout.php">Logout</a></li>
 			</ul>
@@ -88,6 +88,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
               <input type="image" src="https://test.bitpay.com/img/button-medium.png" style="margin-left:50px;" border="1" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
             </form>
             <!-- Bit pay -->
+            <center><a class="icon fa-plus-circle" style="color:white; border:3px solid white; padding:5px; margin-left:-10px;" href="addBasic.php"> Add to profile </a> </center>
 					</div>
 				</section>
 
@@ -113,6 +114,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
               <input type="image" src="https://test.bitpay.com/img/button-medium.png" style="margin-left:50px;" border="1" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
             </form>
             <!-- Bit pay -->
+            <center><a class="icon fa-plus-circle" style="color:white; border:3px solid white; padding:5px; margin-left:-10px;" href="addPremium.php"> Add to profile </a> </center>
           </div>
 				</section>
 				<p><b>Want to figure out how much your subscription really costs? Try our BTC to USD converter!</b></p>
@@ -126,7 +128,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 				<!-- Box -->
 				<section class="box feature">
 					<div class="inner" style="background-image: url(https://i.pinimg.com/originals/af/4f/f6/af4ff6302647186761f30ce8b92afa31.jpg)">
-
 						<header>
 							<h2>Gold Membership</h2>
 							<p>Daily Coupons</p>
@@ -143,6 +144,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
               <input type="image" src="https://test.bitpay.com/img/button-medium.png" style="margin-left:50px;" border="1" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
             </form>
             <!-- Bit pay -->
+            <center><a class="icon fa-plus-circle" style="color:white; border:3px solid white; padding:5px; margin-left:-10px;" href="addGold.php"> Add to profile </a> </center>
 					</div>
 				</section>
 
