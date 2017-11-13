@@ -1,0 +1,1450 @@
+swagger: '2.0'
+
+info:
+  version: "1.0.0"
+  title: StoKd - Internal API
+  description: "Get stoked about StoKd"
+  contact:
+    email: "jcp2fa@virginia.edu"
+host: "stokd-dev-api.herokuapp.com"
+basePath: "/api"
+
+paths:
+  /user:
+    post:
+      description: |
+        Adds a new `user` object. Used when creating an account for the first time.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required: [email, password, type]
+            properties:
+              email:
+                type: string
+                description: Email address for the user.
+              password:
+                type: string
+                format: password
+                description: Password for the user
+              type:
+                type: string
+                description: Type of account (*recruitee*/*recruiter*)
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        409:
+          description: Email address already exists
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+
+  /user/{user_id}:
+    get:
+      description: |
+        Gets a `user` object.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        201:
+          description: Successful response, user account added
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+            
+  /user/{user_id}/basic_information:
+    get:
+      description: |
+        Gets the `BasicInformation` from a users profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Basic information
+          schema:
+            $ref: '#/definitions/BasicInformation'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        409:
+          description: Basic information already created
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    post:
+      description: |
+        Adds a new `BasicInformation` object to a users profile. Used when setting up the user's profile for the first time.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BasicInformation'
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+        409:
+          description: Basic information already created
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    put:
+      description: |
+        Updates `BasicInformation` object on a  users profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BasicInformation'
+      responses:
+        200:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+
+  /user/{user_id}/recruitee:
+    get:
+      description: |
+        Gets a `recruitee` object to a users profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Recruitee'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    post:
+      description: |
+        Adds a new `recruitee` object to a users profile. Used the first time a user adds to their profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Recruitee'
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+        409:
+          description: Recruitee profile already created
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    put:
+      description: |
+        Updates a new `recruitee` object to a users profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Recruitee'
+      responses:
+        200:
+          description: Successfully updated
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+            
+  /user/{user_id}/recruitee/experience:
+    post:
+      description: |
+        Adds a new `experience` object to a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Experience'
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    get:
+      description: |
+        Gets all `experience` from a user's recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: An array of experiences
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Experience'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: User not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    
+  /user/{user_id}/recruitee/experience/{experience_id}:
+    get:
+      description: |
+        Get the requested `experience` object from a user's recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: experience_id
+          in: path
+          description: experience id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Experience
+          schema:
+            $ref: '#/definitions/Experience'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: User not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    put:
+      description: |
+        Updates a `experience` object in users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: experience_id
+          in: path
+          description: experience id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Experience'
+      responses:
+        200:
+          description: Successfully updated
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    delete:
+      description: |
+        Deletes a `experience` object in users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: experience_id
+          in: path
+          description: experience id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully deleted
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+            
+  /user/{user_id}/recruitee/education:
+    post:
+      description: |
+        Adds a new `education` object to a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Education'
+              
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    get:
+      description: |
+        Gets all of the `education` objects on a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Array of education obejects
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Education'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+
+  /user/{user_id}/recruitee/education/{education_id}:
+    get:
+      description: |
+        Gets the specifed `education` object from a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully returned
+          schema:
+            $ref: '#/definitions/Education'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    put:
+      description: |
+        Updates an `education` object in a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Education'
+      responses:
+        200:
+          description: Successfully updated
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    delete:
+      description: |
+        Deletes an `education` object in a users recruitee profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully deleted
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+
+  /user/{user_id}/recruitee/education/{education_id}/scholarship:
+    get:
+      description: |
+        Gets all of the `scholarship` objects from a specifed `education` from a user's profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Scholarship'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    post:
+      description: |
+        Adds a new `scholarship` object to the specifed `education` object from a user's profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Education'
+      responses:
+        201:
+          description: Successfully created
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+            
+  /user/{user_id}/recruitee/education/{education_id}/scholarship/{scholarship_id}:
+    get:
+      description: |
+        Gets the specified`scholarship` object from a specifed `education` from a user's profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: scholarship_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Scholarship'
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    put:
+      description: |
+        Updates the specified `scholarship` object from a specifed `education` from a user's profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: scholarship_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+        - 
+          name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Scholarship'
+      responses:
+        200:
+          description: Successfully updated
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+    delete:
+      description: |
+        Delets the specified`scholarship` object from a specifed `education` from a user's profile.
+      parameters:
+        -
+          name: user_id
+          in: path
+          description: user id
+          required: true
+          type: integer
+        -
+          name: education_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: scholarship_id
+          in: path
+          description: education id
+          required: true
+          type: integer
+        -
+          name: auth_token
+          in: header
+          description: authorization token
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successfully deleted
+        400:
+          description: Bad request
+          schema:
+            title: message
+            type: string
+        401:
+          description: Unauthorized request
+          schema:
+            title: message
+            type: string
+        404:
+          description: Id not found
+          schema:
+            title: message
+            type: string
+        500:
+          description: Internal server error
+          schema:
+            title: message
+            type: string
+
+definitions:          
+  User:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: Unique identifier for the user.  Used when referencing the user.
+      email:
+        type: string
+        description: Email address for the user.
+      password:
+        type: string
+        format: password
+        description: Password for the user (encrypted).
+      registered_on:
+        type: string
+        format: date_time
+        description: Date and time that the user registered for StoKd.
+      basic_information_id:
+        type: integer
+        description: The unique identifier for the basic information for the user
+      basic_information:
+        $ref: '#/definitions/BasicInformation'
+      is_a_recruitee:
+        type: boolean
+        description: True if a user is a recruitee, False if a user is a recruiter.
+      recruitee_id:
+        type: integer
+        description: The unique identifier for the recruitee profile for the user (only if is_a_recruitee == true)
+      recruiter_id:
+        type: integer
+        description: The unique identifier for the recruiter profile for the user (only if is_a_recruitee == false)
+      recruitee_profile:
+        $ref: '#/definitions/Recruitee'
+      recruiter_profile:
+        $ref: '#/definitions/Recruiter'
+        
+  BasicInformation:
+    type: object
+    required:
+      - first_name
+      - last_name
+    properties:
+      basic_information_id:
+        type: integer
+        description: Unique identifier for the basic information of a user.
+        readOnly: true
+      first_name:
+        type: string
+        description: First name of the user.
+      middle_name:
+        type: string
+        description: Middle name for the user. Can be a middle initial or name.  For example, "Charles" or "C"
+      last_name:
+        type: string
+        description: Last name of the user.
+      profile_picture:
+        type: string
+        description: Image URL representing the user's profile picture
+      location:
+        type: string
+        description: Current location that the user is in.
+        
+  Recruitee:
+    type: object
+    properties:
+      recruitee_id:
+        type: integer
+        description: Unique identifier for the recruitee profile of a user.
+      job_seeking:
+        type: string
+        description: Job/opportunity that the user is currently seeking. 
+      job_dream:
+        type: string
+        description: Dream Job/opportunity that the user would eventually like to have.
+      experiences:
+        type: array
+        items:
+          $ref: '#/definitions/Experience'
+      educations:
+        type: array
+        items:
+          $ref: '#/definitions/Education'
+      services:
+        type: array
+        items:
+          $ref: '#/definitions/Service'
+      awards:
+        type: array
+        items:
+          $ref: '#/definitions/Award'
+      skills:
+        type: array
+        items:
+          $ref: '#/definitions/Skill'
+      hobbies:
+        type: array
+        items:
+          $ref: '#/definitions/Hobby'
+      interested_industries:
+        type: array
+        items:
+          $ref: '#/definitions/InterestedIndustry'
+      interested_companies:
+        type: array
+        items:
+          $ref: '#/definitions/InterestedCompany'
+      interested_positions:
+        type: array
+        items:
+          $ref: '#/definitions/InterestedPosition'
+          
+  Experience:
+    type: object
+    properties:
+      experience_id:
+        type: integer
+        description: Unique identifier for the experience of a user.
+      title:
+        type: string
+        description: Title for the position held at the work experience.
+      company:
+        type: string
+        description: Name of the company worked for.
+      location:
+        type: string
+        description: Location of the work experience.
+      description:
+        type: string
+        description: Description of the work experience.
+      start_month:
+        type: string
+        description: Start month of the experience. For example, "June".
+      start_year:
+        type: integer
+        description: Start year of the experience.
+      end_month:
+        type: string
+        description: End month of the experience. For example, "June".
+      end_year:
+        type: integer
+        description: End year of the experience.
+      current:
+        type: boolean
+        description: True if the user is currently working at this experience (no end date for experience). False if the user is not currently working at this experience.
+    
+  Education:
+    type: object
+    properties:
+      education_id:
+        type: integer
+        description: Unique identifier for the education of a user.
+        readOnly: true
+      school:
+        type: string
+        description: School that the user attended. For example, "University of Virginia".
+      sub_School:
+        type: string
+        description: Sub-school that the user attended. For example, "McIntire School of Commerce".
+      degree_type:
+        type: string
+        description: Degree type for the education.  For example, "B.A.", "B.S.", "M.D.", "A.A.".
+      majors:
+        type: array
+        description: Major(s) for the degree.
+        items:
+          type: string
+      minors:
+        type: array
+        description: Minor(s) for the degree.
+        items:
+          type: string
+      graduation_month:
+        type: string
+        description: Month the user graduated. For example, "May".
+      graduation_year:
+        type: integer
+        description: Year the user graduated.
+      scholarships:
+        type: array
+        items:
+          $ref: '#/definitions/Scholarship'
+      additional_information:
+        type: string
+        description: Any additional information a user would like to include about their education.
+
+  Service:
+    type: object
+    properties:
+      service_id:
+        type: integer
+        description: Unique identifier for the service of a user.
+      title:
+        type: string
+        description: Title for the position held at the work experience.
+      organization:
+        type: string
+        description: Name of the organization.
+      location:
+        type: string
+        description: Location of the service.
+      description:
+        type: string
+        description: Description of the service experience.
+      start_month:
+        type: string
+        description: Start month of the service. For example, "June".
+      start_year:
+        type: integer
+        description: Start year of the service.
+      end_month:
+        type: string
+        description: End month of the service. For example, "June".
+      end_year:
+        type: integer
+        description: End year of the service.
+      current:
+        type: boolean
+        description: True if the user is currently working/volunteering at this service (no end date for service). False if the user is not currently working/volunteering at this service.
+      links:
+        type: array
+        description: URIs to anything the user wants to showcase/provide from their service experience.
+        items:
+          type: string
+          
+  Award:
+    type: object
+    properties:
+      award_id:
+        type: integer
+        description: Unique identifier for the award of a user.
+      name:
+        type: string
+        description: Name of the award.
+      month_received:
+        type: string
+        description: Month the award was received.  For example, "July".
+      year_received:
+        type: integer
+        description: Year the award was received.
+      description:
+        type: string
+        description: Description of the award.
+        
+  Skill:
+    type: object
+    properties:
+      skill_id:
+        type: integer
+        description: Unique identifier for the skill of a user.
+      category:
+        type: string
+        description: The category of the skill.  For example, "Athletics"
+      specific_skill:
+        type: string
+        description: The specific skill.  For example, "Wrestling"
+      endorsements:
+        type: array
+        items:
+          $ref: '#/definitions/Endorsement'
+  
+  Hobby:
+    type: object
+    properties:
+      hobby_id:
+        type: integer
+        description: Unique identifier for the hobby of a user.
+      name:
+        type: string
+        description: The name of the hobby.  For example, "Running"
+        
+  InterestedIndustry:
+    type: object
+    properties:
+      interested_industry_id:
+        type: integer
+        description: Unique identifier for the interested industry of a user.
+      industry:
+        type: string
+        description: The name of the industry.  For example, "Consulting"
+        
+  InterestedCompany:
+    type: object
+    properties:
+      interested_company_id:
+        type: integer
+        description: Unique identifier for the interested company of a user.
+      company_name:
+        type: string
+        description: The name of the company.  For example, "McKinsey & Company"
+        
+  InterestedPosition:
+    type: object
+    properties:
+      interested_position_id:
+        type: integer
+        description: Unique identifier for the interested position of a user.
+      position_name:
+        type: string
+        description: The name of the position.  For example, "Management Consultant"
+
+  Scholarship:
+    type: object
+    properties:
+      scholarship_id:
+        type: integer
+        description: Unique identifier for the scholarship associated with an education of a user.
+      name:
+        type: string
+        description: The name of the scholarship recieved.
+      month:
+        type: string
+        description: The month the scholarship was recieved. For example, "September"
+      year:
+        type: integer
+        description: The year the scholarship was recieved.
+        
+  Endorsement:
+    type: object
+    properties:
+      endorsement_id:
+        type: integer
+        description: Unique identifier for the endorsement associated with a skill of a user.
+      endorser:
+        type: integer
+        description: The user_id of the user who gave this endorsement
+
+  Recruiter:
+    type: object
+    properties:
+      recruiter_id:
+        type: integer
+        description: Unique identifier for the recruiter profile of a user.

@@ -135,8 +135,7 @@ input[type=textsearch]:focus {
                    echo "<a style='font-size:18px; margin:25px;' class='icon fa-arrow-circle-o-left' href='shop.php'> Select Membership </a>";
                  }
                  else{
-                   echo "<strong style='font-size:22px; margin:25px;'> Membership Status: </strong><em style='font-size:20px; color:DeepPink;'>" . $row['membership_type'] . "</em>";
-                   echo "<a style='font-size:18px; margin:25px;' class='icon fa-arrow-circle-o-right' href='shop.php'> Time to Upgrade? </a>";
+                   echo "<strong style='font-size:22px; margin:25px;'> Membership Status: </strong><em style='font-size:20px; color:DeepSkyBlue;'>" . $row['membership_type'] . "</em>";
                   //  if($row['membership_type'] == "Basic"){
                   //    echo "<center><h2 style='color:DimGrey;margin-bottom:50px;'>" . $row['membership_type'] . "</h2></center>";
                   //  }
@@ -163,6 +162,7 @@ input[type=textsearch]:focus {
 			<div class="7u 12u(medium)">
 				<!-- Content -->
 				<div id="content" style="margin-bottom: -50px; margin-top: -5px">
+          <small> *Leave blank if no changes </small>
 					<h3>
           <?php
           require_once('./library.php');
@@ -178,20 +178,23 @@ input[type=textsearch]:focus {
             $result = $con->query($query1);
             $row = mysqli_fetch_array($result);
 
-            echo "<strong> Username: </strong>" . $row['username'] . "<br>";
+            echo "Username: " . $row['username'] . "<br>";
             echo "<br>";
-            echo "<strong> Email: </strong>" . $row['email'] . "<br>";
+            echo "<form action='editsuccess.php' method='post'> Email: <input  style='width:250px;' name='editemail' placeholder=' " . $row['email'] . "'><br>";
             echo "<br>";
-            echo "<strong> Address: </strong>" . $row['address'] . "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" .
-            $row['city'] . ", " . $row['state'] . " " . $row['zipcode'] . "<br>";
+            echo "Address: <input style='width:250px;' name='editaddress' placeholder=' " . $row['address'] . "'><br>";
+            echo "<input style='width:180px;margin-left:94px;' name='editcity' placeholder=' " . $row['city'] . "'>";
+            echo "<input style='width:100px;' name='editstate' placeholder=' " . $row['state'] . "'><input style='width:100px;' name='editzipcode' placeholder=' " . $row['zipcode'] . " '><br>";
             echo "<br>";
-            echo "<strong> Phone: </strong>" . $row['phone'] . "<br>";
+            echo "Phone: <input style='width:150px;' name='editphone' placeholder=' " . $row['phone'] . "'><br>";
             echo "<br>";
-            echo "<strong> Birthday: </strong>" . $row['birthday'] . "<br>";
-            echo "<br><button type='submit' class='btn btn-primary'><a href='editprofile.php'> Edit Info </a></button>";
+            echo "Birthday: <input style='width:150px;' name='editbirthday' placeholder='" . $row['birthday'] . "'><br>";
+
+            echo "<br><button type='submit' class=btn btn-primary href='editsuccess.php'> Submit </button>";
+            echo "</form>";
             echo "<br>";
 
-          ?>    <br></h3>
+          ?><br></h3>
 				</div>
 			</div>
       <h2> Your Coupons </h2>
@@ -228,43 +231,35 @@ input[type=textsearch]:focus {
         <div class="wrapper">
           <div id="slider4" class="text-center">
             <div class="slide">
-              <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-              <img src="images/cereal.jpg"> </a>
+              <img src="images/cereal.jpg">
                 <p style="font-weight: bold;">$1.00 off any <br> Big G Cereal</p>
             </div>
           <div class="slide">
-            <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-            <img src="images/cinna.jpg"> </a>
+            <img src="images/cinna.jpg">
               <p style="font-weight: bold;">Buy one get one free <br> any Pillsbury</p>
           </div>
           <div class="slide">
-            <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-            <img src="images/gogurt.jpg"> </a>
+            <img src="images/gogurt.jpg">
               <p style="font-weight: bold;">$1.00 off any <br> two Yoplait products</p>
          </div>
          <div class="slide">
-           <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-           <img src="images/fiberone.jpg"> </a>
+           <img src="images/fiberone.jpg">
              <p style="font-weight: bold;">$0.25 off any <br> Fiber One Granola</p>
         </div>
         <div class="slide">
-          <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-          <img src="images/soup.jpg"> </a>
+          <img src="images/soup.jpg">
             <p style="font-weight: bold;">2 Progresso Soups <br> cans for 1</p>
         </div>
           <div class="slide">
-            <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-            <img src="images/bounty.jpg"> </a>
+            <img src="images/bounty.jpg">
               <p style="font-weight: bold;">$0.80 off <br> Bounty Products</p>
           </div>
           <div class="slide">
-            <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-            <img src="images/hamhelp.jpg"> </a>
+            <img src="images/hamhelp.jpg">
               <p style="font-weight: bold;">$2.00 for any two <br> Hamburger Helper </p>
           </div>
            <div class="slide">
-             <a href="https://kroger.softcoin.com/programs/kroger/digital_coupons/?origin=DigitalCoupons&banner=Kroger">
-             <img src="images/pep.jpg"> </a>
+             <img src="images/pep.jpg">
                <p style="font-weight: bold;">$0.50 off <br> Hormer Pepperoni products </p>
           </div>
     </div>
