@@ -61,7 +61,7 @@ if (mysqli_connect_errno())
     $result = $con->query($sql);
 
    if ($result) {
-     $message = "Record updated successfully";
+     $message = "Changes saved!";
      echo "<script type='text/javascript'>alert('$message');</script>";
      header('Refresh: 2; URL = profile.php');
     } else {

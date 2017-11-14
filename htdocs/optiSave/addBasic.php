@@ -71,12 +71,15 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             //Check if user already has a membership
             $query2=mysqli_query($con, "SELECT * FROM userMembership WHERE username='$session_user'");
+						// $query3 = "SELECT * FROM userMembership WHERE username='$session_user'";
+					  // $result = $con->query($query3);
+					  // $row = mysqli_fetch_array($result);
  						if(mysqli_num_rows($query2)>=1)
    					{
     	         echo "<h2>You already have an assigned membership.</h2><br>";
                echo "<i style='font-size:32px; margin-bottom:20px;'>Click below change your membership status.</i><br>";
                echo "<br>";
-               echo "<a href='profile.php' class='button icon fa-backward'>View profile</a>";
+               echo "<a href='editmembership.php' class='button icon fa-backward'>Update</a>";
    					}
             else{
               $sql="INSERT INTO userMembership (user_id, username, membership_type)

@@ -75,7 +75,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<header>
 							<h2 style="color:white;">Basic Membership</h2>
 							<p style="color:white;">Monthly coupons</p>
-							<p style="color:white;"> 0.00078 BTC/month </p>
+							<h3 style="color:white;"> 0.00078 BTC/month </h3>
 						</header>
 						<p style="color:white;">Customized coupons will be sent to you on a <b>monthly basis</b>, these coupons are
             suited to the business you frequent to often.</p>
@@ -101,7 +101,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<header>
 							<h2 style="color:white;">Premium Membership</h2>
 							<p style="color:white;">Weekly Coupons</p>
-							<p style="color:white;"> 0.00125 BTC/month </p>
+							<h3 style="color:white;"> 0.00125 BTC/month </h3>
 						</header>
 						<p style="color:white;">Personalized coupons sent <b>each week</b> via email, mobile app or website.
             Eligible to participate in rewards program.</p>
@@ -131,7 +131,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 						<header>
 							<h2>Gold Membership</h2>
 							<p>Daily Coupons</p>
-							<p> 0.0187 BTC/month </p>
+							<h3> 0.0187 BTC/month </h3>
 						</header>
 						<p>Coupons will be sent <b>each day</b> at a time you prefer, so that you can save at the businesses you frequent.
             Eligible for rewards program.</p>

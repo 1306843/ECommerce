@@ -24,7 +24,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	<!-- Favicon-->
 	<link rel="shortcut icon" href="images/pic08.jpg"/>
   <style>
-  nav ul{height:250px; width:100%;}
+  nav ul{height:300px; width:100%;}
   nav ul{overflow:hidden; overflow-y:scroll;}
   input[type=textsearch] {
     width: 1000px;
@@ -135,7 +135,8 @@ input[type=textsearch]:focus {
                    echo "<a style='font-size:18px; margin:25px;' class='icon fa-arrow-circle-o-left' href='shop.php'> Select Membership </a>";
                  }
                  else{
-                   echo "<strong style='font-size:22px; margin:25px;'> Membership Status: </strong><em style='font-size:20px; color:DeepSkyBlue;'>" . $row['membership_type'] . "</em>";
+                   echo "<strong style='font-size:22px; margin:25px;'> Membership Status: </strong><em style='font-size:20px; color:DeepPink;'>" . $row['membership_type'] . "</em>";
+                   echo "<a style='font-size:18px; margin:25px;' class='icon fa-arrow-circle-o-right' href='shop.php'> Time to Upgrade? </a>";
                   //  if($row['membership_type'] == "Basic"){
                   //    echo "<center><h2 style='color:DimGrey;margin-bottom:50px;'>" . $row['membership_type'] . "</h2></center>";
                   //  }
@@ -189,7 +190,7 @@ input[type=textsearch]:focus {
             echo "Phone: <input style='width:150px;' name='editphone' placeholder=' " . $row['phone'] . "'><br>";
             echo "<br>";
             echo "Birthday: <input style='width:150px;' name='editbirthday' placeholder='" . $row['birthday'] . "'><br>";
-
+            echo "<br>";
             echo "<br><button type='submit' class=btn btn-primary href='editsuccess.php'> Submit </button>";
             echo "</form>";
             echo "<br>";
@@ -201,19 +202,19 @@ input[type=textsearch]:focus {
       <div class="5u 12u(medium)" style="border:3px solid gray;">
         <nav>
             <ul>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
-                <li>Link 4</li>
-                <li>Link 5</li>
-                <li>Link 6</li>
-                <li>Link 7</li>
-                <li>Link 8</li>
-                <li>Link 9</li>
-                <li>Link 10</li>
-                <li>Link 11</li>
-                <li>Link 13</li>
-                <li>Link 13</li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-hourglass-half'> Free Appetizer at Applebee's</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-hourglass-2'> Buy One Tide Detergent, Get One Free</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> $0.80 off for two Spaghetti-O's cans</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> $1.00 for any Scotch Tape Product</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> Free Personal Pan Pizza at Pizza Hut</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> Buy One 24oz Tropical Smoothie, Get One Half Off</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> 20% off any Yoplait product</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> Buy two Lunchables, Get One Free</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> $0.50 off any Purdue product</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> 15% off Capri-Sun products</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> $3.50 off when you purchase Gillette Shaving Cream and Gillette razor</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> Free Dunkin Donuts Coffee Pack</a></li>
+                <li><a href='https://www.retailmenot.com/' class='icon fa-chevron-circle-right'> 25% off any Silk Soymilk Product</a></li>
             </ul>
         </nav>
       </div>
