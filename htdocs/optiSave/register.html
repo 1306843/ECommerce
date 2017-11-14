@@ -208,9 +208,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							birthday = document.getElementById("form_birthday").value;
 							username = document.getElementById("form_username").value;
 							password = document.getElementById("form_password").value;
-							alert("hello");
-							/*if(name == "") {
-								window.alert('Name is required');
+							if(name == "") {
+								alert('Name is required');
 								return false;
 							}
 							testVal = /^[A-Za-z ]/;
@@ -230,6 +229,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 							if(address == "") {
 								alert("Address required");
 								return false;
+							}
+							testVal = /^[A-Za-z#. ]/;
+							if(!testVal.test(address)){
+								alert("Address can only contain letters, whitespace, #, or .");
 							}
 							if(city == "") {
 								alert("City required");
@@ -294,7 +297,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Password must be at least 6 alphanumeric and/or special characters");
 								return false;
 							}
-							return true;*/
+							return true;
 					}
 					//-->
 					</script>
