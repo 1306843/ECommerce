@@ -221,7 +221,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Email required");
 								return false;
 							}
-							testVal = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+							testVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 							if(!testVal.test(email)) {
 								alert("Email must be in format (text)@(text).(text), with a 2 or 3-digit tld");
 								return false;
