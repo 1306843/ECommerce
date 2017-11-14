@@ -221,7 +221,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Email required");
 								return false;
 							}
-							testVal = /\w@\w.\w/;
+							testVal = /\w@\w.([netcomrgdu]{3})/;
 							if(!testVal.test(email)) {
 								alert("Email must be in format (text)@(text).(text)");
 								return false;
@@ -230,9 +230,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								alert("Address required");
 								return false;
 							}
-							testVal = /^[A-Za-z#. ]/;
+							testVal = /^[A-Za-z0-9#. ]/;
 							if(!testVal.test(address)){
-								alert("Address can only contain letters, whitespace, #, or .");
+								alert("Address can only contain numbers, letters, whitespace, #, or .");
 							}
 							if(city == "") {
 								alert("City required");
