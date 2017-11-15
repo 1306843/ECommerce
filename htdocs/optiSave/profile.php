@@ -152,6 +152,10 @@ input[type=textsearch]:focus {
                ?>
            </section>
       </div>
+      <div class="5u 12u(medium)">
+        <label style="font-size:20px;  font-weight: bold;">Update your coupon preferences!</label>
+        <a href='survey.html' class='button icon fa-arrow-circle-right'>Questionnaire</a>
+      </div>
 		</div>
 	</div>
 </div>

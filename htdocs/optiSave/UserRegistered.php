@@ -101,7 +101,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								require 'SMTP.php';
 								$mail = new PHPMailer;
 								$mail->isSMTP();
-
 								$mail->SMTPDebug = 0;
 								$mail->Host = 'smtp.gmail.com';
 								$mail->Port = 587;
@@ -122,7 +121,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								}
 								echo "<p></p>";
 								echo "<p></p>";
-					  	  echo "<a href='login.php' class='button big icon fa-arrow-circle-right'>First Login</a>";
+
+								echo "<a href='login.php' class='button big icon fa-arrow-circle-right'>First Login</a>";
+								echo "<a href='survey.html' class='button alt big icon'>Questionnaire</a>";
+
 	          	}
 	          	mysqli_close($con);
     				}
@@ -130,7 +132,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
           ?>
         </p>
-			<!-- </div> -->
 		</div>
 	</div>
 </div>
