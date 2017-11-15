@@ -284,20 +284,20 @@ input[type=textsearch]:focus {
 </div>
 </div>
 
-<div id="banner-wrapper">
+<!-- <div id="banner-wrapper">
 <div class="box container" style="margin-bottom:-40px;">
   <center><h2 style='color:DimGray;'> Search for Coupons </h2></center>
 </div>
 </div>
 
 <!-- Search Bar -->
-<div id="main-wrapper" style="background-image: url(https://shopify-ecommerce-university.s3.amazonaws.com/production/legacy/guides/50-ways/header-images/couponcodes.jpg)">
+<!-- <div id="main-wrapper" style="background-image: url(https://shopify-ecommerce-university.s3.amazonaws.com/production/legacy/guides/50-ways/header-images/couponcodes.jpg)">
 <div class="container" >
 	<div class="row" >
       <input type="textsearch" name="search" placeholder=" Search">
 	</div>
 </div>
-</div>
+</div> -->
 
 <!-- Footer -->
 <div id="footer-wrapper" style="margin-top: -45px; margin-bottom: -20px">

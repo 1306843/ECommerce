@@ -94,7 +94,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 	          	{
 								// session_start();
 								// $_SESSION['user'] = $username;
-								echo "<h2> Successfully Registered! </h2>";
+								echo "<center><h2> Successfully Registered! </h2></center>";
 	            						echo "<div><p style='text-align:center;'>Welcome $name. You are registered as $username.</p></div><br/>\n";
 								require 'Exception.php';
 								require 'PHPMailer.php';
@@ -123,7 +123,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 								echo "<p></p>";
 								echo "<p></p>";
 					  	  echo "<a href='login.php' class='button big icon fa-arrow-circle-right'>First Login</a>";
-								echo "<a href='shop.php' class='button alt big icon'>Get Started</a>";
 	          	}
 	          	mysqli_close($con);
     				}
